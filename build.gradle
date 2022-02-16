@@ -1,0 +1,26 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'hello'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral() // 라이브러리를 다운로드 받는 곳
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf' // View 템플릿 엔진
+	implementation 'org.springframework.boot:spring-boot-starter-web' // Web 프로젝트 라이브러리
+	// implementation 'org.springframework.boot:spring-boot-starter-jdbc' // JDBC 라이브러리 (Java <-> DB 연결 필수 요소)
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // jpa 라이브러리
+	runtimeOnly 'com.h2database:h2' // DB랑 붙을 때 db가 제공하는 클라이언트가 필요 -> h2
+	testImplementation 'org.springframework.boot:spring-boot-starter-test' // 테스트 라이브러리(JUnit)
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
